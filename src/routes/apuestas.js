@@ -8,4 +8,11 @@ router.get('/add', (req, res) => {
 });
 
 
+router.get('/', async(req, res) => {
+    const apuestas = await pool.query('SELECT * FROM apuestas');
+    console.log(apuestas);
+    res.send('apuestas:')
+});
+
+
 module.exports = router
