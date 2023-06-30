@@ -1,19 +1,15 @@
-CREATE DATABASE db_managbet
+CREATE DATABASE db_managbet;
 
-USE database_managbet;
+USE db_managbet;
 
 CREATE TABLE usuarios (
-  id int(11) NOT NULL AUTO_INCREMENT, 
+  id int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY, 
   nickname varchar(20) NOT NULL,
   email varchar(60) NOT NULL,
   password varchar(45) NOT NULL,
   admin tinyint NOT NULL
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
+);
 
-describe usuarios;
-
--- tabla de bookies
 
 /*
 CREATE TABLE bookies (
@@ -28,12 +24,13 @@ CREATE TABLE bookies (
 describe bookies
 */
 
---tabla de apuestas
 
 CREATE TABLE apuestas (
-  id int(11) NOT NULL AUTO_INCREMENT,
+  id int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
   usuario_id int(11) NOT NULL,
-  --bookie_id int(11) NOT NULL,
+  /*
+  bookie_id int(11) NOT NULL,
+  */
   dineroApostado varchar(45) NOT NULL,
   cuota float NOT NULL,
   estado varchar(45) NOT NULL,
@@ -43,12 +40,10 @@ CREATE TABLE apuestas (
   partido varchar(45) NOT NULL,
   pronostico varchar(45) NOT NULL,
   fecha datetime NOT NULL,
-  created_at timestamp NOT NULL DEFAULT current_timestamp
-  PRIMARY KEY (`id`),
-  KEY `idUsuario_idx` (`idUsuario`),
+  created_at timestamp NOT NULL DEFAULT current_timestamp,
+  /*
   KEY `idBookie_idx` (`idBookie`),
- -- CONSTRAINT `fk_bookie` FOREIGN KEY (`bookie_id`) REFERENCES `bookies` (`id`),
-  CONSTRAINT `fk_usuario` FOREIGN KEY (`usuario_id`) REFERENCES `usuarios` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
-
-describe apuestas
+  CONSTRAINT `fk_bookie` FOREIGN KEY (`bookie_id`) REFERENCES `bookies` (`id`),
+  */
+  CONSTRAINT fk_usuario FOREIGN KEY (usuario_id) REFERENCES usuarios (id)
+);
