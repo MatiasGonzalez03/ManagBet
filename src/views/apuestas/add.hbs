@@ -1,1 +1,46 @@
-formulario
+<div class="container p-4">
+    <div class="row">
+        <div class="col-md-4 mx-auto">
+
+            <div class="card">
+                <div class="card-body">
+                    <form action="/apuestas/add" method="POST">
+                        <div class="form-group">
+                            <input type="number" name="dinero" class="form-control" placeholder="Dinero apostado">
+                        </div>
+                        <div class="form-group">
+                            <input type="number" name="cuota" class="form-control" placeholder="Cuota">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="estado" class="form-control" placeholder="Estado">
+                        </div>
+                        <div class="form-group">
+                            <input type="number" name="stake" class="form-control" placeholder="Stake">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="pais" class="form-control" placeholder="Pais">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="competicion" class="form-control" placeholder="Competicion">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="partido" class="form-control" placeholder="Partido">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="pronostico" class="form-control" placeholder="Pronostico">
+                        </div>
+                        <div class="form-group">
+                            <input type="number" name="usuario_id" class="form-control" placeholder="Id del usuario">
+                        </div>
+                        <div class="form-group">
+                            <button class="btn btn-success btn-block">
+                                Save
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

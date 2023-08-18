@@ -1,0 +1,50 @@
+    body {
+        margin: 0;
+        padding: 0;
+        background-image: url("../img/caro1.jpg");
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center center;
+        background-attachment: fixed;
+    }
+    
+    .nav-link {
+        transition: all 0.2s;
+    }
+    
+    .nav-link:hover {
+        border-bottom: 2px solid white;
+    }
+    
+    .carousel-item {
+        height: 500px;
+        background-color: black;
+        position: relative;
+    }
+    
+    .overlay-image {
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        position: absolute;
+        background-position: center;
+        background-size: cover;
+        opacity: 0.5;
+    }
+    
+    .featurette-divider {
+        margin: 50px;
+    }
+    
+    #separador {
+        width: 100%;
+        overflow: hidden;
+        position: relative;
+        z-index: 2;
+    }
+    
+    #separador .content {
+        width: 200%;
+        height: 100px;
+    }

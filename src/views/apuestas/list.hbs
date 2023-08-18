@@ -1,0 +1,23 @@
+<div class="container p-4">
+    <div class="row">
+        {{#each apuestas}}
+        <div class="col-md-3">
+            <div class="card text-center">
+                <div class="card-body">
+                        <h3 class="card-title text-uppercase">
+                            {{partido}}
+                        </h3>
+                    <p class="m-2">Dinero apostado: {{dinero}}</p>
+                    <p>{{timeago created_at}}</p>
+                    <a class="btn btn-danger" href="/apuestas/delete/{{id}}">
+                        Borrar
+                    </a>
+                    <a class="btn btn-secondary" href="/apuestas/edit/{{id}}">
+                        Editar
+                    </a>
+                </div>
+            </div>
+        </div>
+        {{/each}}
+    </div>
+</div>
