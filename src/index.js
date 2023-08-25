@@ -5,11 +5,13 @@ const exphbs = require('express-handlebars');
 const flash = require('connect-flash');
 const session = require('express-session');
 const MySQLStore = require('express-mysql-session')(session);
+const passport = require ('passport')
 
 const { database } = require('./keys');
 
 // initializations
 const app = express();
+require('./lib/passport')
 
 //settings
 app.set('port', process.env.PORT || 4000);
@@ -23,17 +25,19 @@ app.engine('.hbs', exphbs.engine({
 }))
 app.set('view engine', '.hbs');
 
-//middlewares
-app.use(morgan('dev'));
-app.use(express.urlencoded({ extended: false }));
-app.use(express.json());
-app.use(flash());
 app.use(session({
     secret: 'secretosecreto',
     resave: false,
     saveUninitialized: false,
     store: new MySQLStore(database)
 }));
+//middlewares
+app.use(morgan('dev'));
+app.use(express.urlencoded({ extended: false }));
+app.use(express.json());
+app.use(flash());
+app.use(passport.initialize());
+app.use(passport.session());
 
 // global variables
 app.use((req, res, next) => {
