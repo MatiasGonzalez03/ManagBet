@@ -21,7 +21,7 @@
         "bcryptjs": "^2.4.3",
         "connect-flash": "^0.1.1",
         "express": "^4.18.2",
-        "express-handlebars": "^7.0.7",
+        "express-handlebars": "^7.1.2",
         "express-mysql-session": "^3.0.0",
         "express-session": "^1.17.3",
         "express-validator": "^7.0.1",
@@ -30,5 +30,8 @@
         "passport": "^0.6.0",
         "passport-local": "^1.0.0",
         "timeago.js": "^4.0.2"
+    },
+    "devDependencies": {
+        "nodemon": "^3.0.1"
     }
 }
