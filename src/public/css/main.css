@@ -1,3 +1,4 @@
+    /*
     body {
         margin: 0;
         padding: 0;
@@ -6,6 +7,14 @@
         background-size: cover;
         background-position: center center;
         background-attachment: fixed;
+    }
+    */
+    
+    .main-header {
+        position: relative;
+        background: url(../img/caro1.jpg);
+        background-size: cover;
+        min-height: 700px;
     }
     
     .nav-link {
