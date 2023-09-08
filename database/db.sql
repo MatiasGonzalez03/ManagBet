@@ -6,7 +6,7 @@ CREATE TABLE usuarios (
   id int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY, 
   nickname varchar(20) NOT NULL,
   email varchar(60) NOT NULL,
-  password varchar(45) NOT NULL,
+  password varchar(100) NOT NULL,
   admin tinyint NOT NULL
 );
 
@@ -31,7 +31,7 @@ CREATE TABLE apuestas (
   /*
   bookie_id int(11) NOT NULL,
   */
-  dineroApostado varchar(45) NOT NULL,
+  dinero varchar(45) NOT NULL,
   cuota float NOT NULL,
   estado varchar(45) NOT NULL,
   stake varchar(2) NOT NULL,
