@@ -1,6 +1,6 @@
 body {
     margin: 0;
-    background: url(src\public\img\caro1.jpg) ;
+    background: url(/src/public/img/caro1.jpg) ;
     background-size: cover;
     background-attachment: fixed;
 }
