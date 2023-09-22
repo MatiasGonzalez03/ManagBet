@@ -53,6 +53,7 @@ app.use('/apuestas', require('./routes/apuestas'));
 
 // public
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static('src\public'))
 
 // starting server
 app.listen(app.get('port'), () => {
