@@ -27,7 +27,7 @@ router.post('/signin', (req, res, next) => {
 });
 
 router.get('/profile', (req, res) => {
-    res.send('this is your profile');
+    res.render('profile');
 });
 
 
