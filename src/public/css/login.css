@@ -1,6 +1,6 @@
 body {
     margin: 0;
-    background: url(/src/public/img/caro1.jpg);
+    background: url(/img/caro1.jpg);
     background-size: cover;
     background-attachment: fixed;
 }
@@ -9,9 +9,9 @@ body {
     box-sizing: border-box;
 }
 
-.formulario {
+.card-body {
     background: white;
-    margin-top: 150px;
+    margin-top: 100px;
     padding: 30px
 }
 
@@ -27,7 +27,7 @@ input[type="password"] {
     border: none;
 }
 
-.icon {
+.icon{
     min-width: 50px;
     text-align: center;
     color: grey;
@@ -44,7 +44,7 @@ input[type="password"] {
     font-size: 15px;
 }
 
-.form-control {
+.form-group {
     margin-bottom: 10px;
     position: relative;
 }
@@ -76,7 +76,7 @@ input[type="password"] {
     border-color: #e74c3c;
 }
 
-.formulario .btn {
+.form-group .btn {
     border: none;
     width: 100%;
     color: white;
@@ -87,7 +87,7 @@ input[type="password"] {
 }
 
 @media (min-width:768px) {
-    .formulario {
+    .card-body {
         margin: auto;
         width: 500px;
         margin-top: 150px;
