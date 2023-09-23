@@ -5,7 +5,9 @@ const passport = require('passport');
 const { isLoggedIn, isNotLoggedIn } = require('../lib/auth');
 
 router.get('/signup', isNotLoggedIn, (req, res) => {
-    res.render('auth/signup');
+    res.render('auth/signup', {
+        style: 'login.css'
+    });
 })
 
 router.post('/signup', isNotLoggedIn, passport.authenticate('local.signup', {
