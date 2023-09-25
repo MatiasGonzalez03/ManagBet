@@ -6,7 +6,8 @@ const { isLoggedIn, isNotLoggedIn } = require('../lib/auth');
 
 router.get('/signup', isNotLoggedIn, (req, res) => {
     res.render('auth/signup', {
-        style: 'login.css'
+        style: 'login.css',
+        navbar: 'navbar.css'
     });
 })
 
@@ -18,7 +19,8 @@ router.post('/signup', isNotLoggedIn, passport.authenticate('local.signup', {
 
 router.get('/signin', isNotLoggedIn, (req, res) => {
     res.render('auth/signin', {
-        style: 'login.css'
+        style: 'login.css',
+        navbar: 'navbar.css'
     });
 })
 
@@ -32,7 +34,9 @@ router.post('/signin', isNotLoggedIn, (req, res, next) => {
 });
 
 router.get('/profile', isLoggedIn, (req, res) => {
-    res.render('profile');
+    res.render('profile', {
+        navbar: 'navbar.css'
+    });
 
 });
 

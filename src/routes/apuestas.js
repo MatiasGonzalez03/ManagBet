@@ -5,7 +5,9 @@ const pool = require('../database')
 const { isLoggedIn } = require('../lib/auth');
 
 router.get('/add', isLoggedIn, (req, res) => {
-    res.render('apuestas/add');
+    res.render('apuestas/add', {
+        navbar: 'navbar.css'
+    });
 });
 
 router.post('/add', isLoggedIn, async(req, res) => {
@@ -29,7 +31,10 @@ router.post('/add', isLoggedIn, async(req, res) => {
 
 router.get('/', isLoggedIn, async(req, res) => {
     const apuestas = await pool.query('SELECT * FROM apuestas WHERE usuario_id = ?', [req.user.id]);
-    res.render('apuestas/list', { apuestas });
+    res.render('apuestas/list', {
+        apuestas,
+        navbar: 'navbar.css'
+    });
 });
 
 router.get('/delete/:id', isLoggedIn, async(req, res) => {
@@ -43,7 +48,10 @@ router.get('/edit/:id', isLoggedIn, async(req, res) => {
     const { id } = req.params;
     const apuestas = await pool.query('SELECT * FROM apuestas WHERE id = ?', [id]);
     console.log(apuestas);
-    res.render('apuestas/edit', { apuestas: apuestas[0] });
+    res.render('apuestas/edit', {
+        apuestas: apuestas[0],
+        navbar: 'navbar.css'
+    });
 });
 
 router.post('/edit/:id', isLoggedIn, async(req, res) => {
