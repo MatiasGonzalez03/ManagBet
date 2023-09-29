@@ -12,7 +12,11 @@
                             <input type="number" name="cuota" class="form-control" placeholder="Cuota">
                         </div>
                         <div class="form-group">
-                            <input type="text" name="estado" class="form-control" placeholder="Estado">
+                            <select class="form-control" name="estado">
+                                <option value="Pendiente">Pendiente</option>
+                                <option value="Acertada">Acertada</option>
+                                <option value="Fallada">Fallada</option>
+                            </select>
                         </div>
                         <div class="form-group">
                             <input type="number" name="stake" class="form-control" placeholder="Stake">
@@ -31,7 +35,7 @@
                         </div>
                         <div class="form-group">
                             <button class="btn btn-success btn-block">
-                                Save
+                                Crear Apuesta
                             </button>
                         </div>
                     </form>

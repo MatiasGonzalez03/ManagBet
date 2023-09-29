@@ -56,7 +56,7 @@ router.get('/edit/:id', isLoggedIn, async(req, res) => {
 
 router.post('/edit/:id', isLoggedIn, async(req, res) => {
     const { id } = req.params;
-    const { dinero, cuota, estado, stake, pais, competicion, partido, pronostico, usuario_id } = req.body;
+    const { dinero, cuota, estado, stake, pais, competicion, partido, pronostico } = req.body;
     const newApuesta = {
         dinero,
         cuota,
@@ -66,7 +66,6 @@ router.post('/edit/:id', isLoggedIn, async(req, res) => {
         competicion,
         partido,
         pronostico,
-        usuario_id
     };
     await pool.query('UPDATE apuestas set ? WHERE id = ?', [newApuesta, id]);
     req.flash('success', 'Apuesta modificada exitosamente');
