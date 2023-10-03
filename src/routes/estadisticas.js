@@ -18,8 +18,8 @@ router.get('/', isLoggedIn, async(req, res) => {
         const promedioDineroApostado = await pool.query('SELECT AVG(dinero) AS promedio FROM apuestas WHERE usuario_id = ?', [usuario_id]);
         const apuestaMasAlta = await pool.query('SELECT MAX(dinero) AS maximo FROM apuestas WHERE usuario_id = ?', [usuario_id]);
         const apuestaMasBaja = await pool.query('SELECT MIN(dinero) AS minimo FROM apuestas WHERE usuario_id = ?', [usuario_id]);
-        const gananciaTotal = await pool.query('SELECT SUM(CASE WHEN estado = \'Acertada\' THEN (dinero * cuota) ELSE 0 END) AS ganancia FROM apuestas WHERE usuario_id = ?', [usuario_id]);
-        const perdidaTotal = await pool.query('SELECT SUM(CASE WHEN estado = \'Fallada\' THEN (dinero * cuota) ELSE 0 END) AS perdida FROM apuestas WHERE usuario_id = ?', [usuario_id]);
+        const gananciaTotal = await pool.query('SELECT SUM(CASE WHEN estado = \'Acertada\' THEN (dinero * cuota - dinero) ELSE 0 END) AS ganancia FROM apuestas WHERE usuario_id = ?', [usuario_id]);
+        const perdidaTotal = await pool.query('SELECT SUM(CASE WHEN estado = \'Fallada\' THEN (dinero) ELSE 0 END) AS perdida FROM apuestas WHERE usuario_id = ?', [usuario_id]);
         const gananciaPerdida = 0;
         const cantidadFallidas = await pool.query('SELECT COUNT(*) AS fallidas FROM apuestas WHERE estado = \'Fallada\' AND usuario_id = ?', [usuario_id]);
         const cantidadAcertadas = await pool.query('SELECT COUNT(*) AS acertadas FROM apuestas WHERE estado = \'Acertada\' AND usuario_id = ?', [usuario_id]);
