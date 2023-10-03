@@ -9,7 +9,7 @@
                             <input type="number" value="{{ apuestas.dinero }}" name="dinero" class="form-control" placeholder="Dinero apostado">
                         </div>
                         <div class="form-group">
-                            <input type="number" value="{{ apuestas.cuota }}" name="cuota" class="form-control" placeholder="Cuota">
+                            <input type="number " step="01" value="{{ apuestas.cuota }}" name="cuota" class="form-control" placeholder="Cuota">
                         </div>
                         <select class="form-control" name="estado">
                                 <option>{{ apuestas.estado }}</option>
@@ -33,7 +33,7 @@
                             <input type="text" value="{{ apuestas.pronostico }}" name="pronostico" class="form-control" placeholder="Pronostico">
                         </div>
                         <div class="form-group">
-                            <button class="btn btn-success btn-block">
+                            <button class="btn">
                                 Guardar
                             </button>
                         </div>

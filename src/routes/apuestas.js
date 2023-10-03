@@ -6,6 +6,7 @@ const { isLoggedIn } = require('../lib/auth');
 
 router.get('/add', isLoggedIn, (req, res) => {
     res.render('apuestas/add', {
+        style: 'list.css',
         navbar: 'navbar.css'
     });
 });
@@ -33,6 +34,7 @@ router.get('/', isLoggedIn, async(req, res) => {
     const apuestas = await pool.query('SELECT * FROM apuestas WHERE usuario_id = ?', [req.user.id]);
     res.render('apuestas/list', {
         apuestas,
+        style: 'list.css',
         navbar: 'navbar.css'
     });
 });
@@ -50,6 +52,7 @@ router.get('/edit/:id', isLoggedIn, async(req, res) => {
     console.log(apuestas);
     res.render('apuestas/edit', {
         apuestas: apuestas[0],
+        style: 'list.css',
         navbar: 'navbar.css'
     });
 });
@@ -71,5 +74,7 @@ router.post('/edit/:id', isLoggedIn, async(req, res) => {
     req.flash('success', 'Apuesta modificada exitosamente');
     res.redirect('/apuestas');
 });
+
+
 
 module.exports = router

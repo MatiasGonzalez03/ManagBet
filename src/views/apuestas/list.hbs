@@ -1,5 +1,5 @@
-<div class="col-md-4 mx-auto">
-            <div class="card card-body text-center">
+<div class="form-group">
+            <div class="btn">
                 <a href="/apuestas/add">Crear Apuesta</a>
             </div>
 </div>
@@ -8,17 +8,19 @@
     <div class="row">
         {{#each apuestas}}
         <div class="col-md-3">
-            <div class="card text-center">
+            <div class="card">
                 <div class="card-body">
-                        <h3 class="card-title text-uppercase">
-                            {{partido}}
-                        </h3>
-                    <p class="m-2">Dinero apostado: ${{dinero}}</p>
-                    <p>{{timeago created_at}}</p>
-                    <a class="btn btn-danger" href="/apuestas/delete/{{id}}">
+                    <h3 class="card-title" >
+                        {{partido}}
+                    </h3>
+                    <p class="m-2">Estado: {{estado}}</p>
+                    <p class="m-2">Pronostico: {{pronostico}}</p>
+                    <p class="m-2">Cuota: {{cuota}}</p>
+                    <p class="m-2"> {{timeago created_at}}</p>
+                    <a class="btn" href="/apuestas/delete/{{id}}">
                         Borrar
                     </a>
-                    <a class="btn btn-secondary" href="/apuestas/edit/{{id}}">
+                    <a class="btn light" href="/apuestas/edit/{{id}}">
                         Editar
                     </a>
                 </div>
