@@ -35,6 +35,7 @@ router.post('/signin', isNotLoggedIn, (req, res, next) => {
 
 router.get('/profile', isLoggedIn, (req, res) => {
     res.render('profile', {
+        style: 'perfil.css',
         navbar: 'navbar.css'
     });
 
