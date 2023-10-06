@@ -31,12 +31,38 @@ router.post('/add', isLoggedIn, async(req, res) => {
 
 
 router.get('/', isLoggedIn, async(req, res) => {
-    const apuestas = await pool.query('SELECT * FROM apuestas WHERE usuario_id = ?', [req.user.id]);
-    res.render('apuestas/list', {
-        apuestas,
-        style: 'list.css',
-        navbar: 'navbar.css'
-    });
+    try {
+        const usuario_id = req.user.id;
+        let query = 'SELECT * FROM apuestas WHERE usuario_id = ?';
+        const queryParams = [usuario_id];
+
+        const { estado, pais, partido } = req.query;
+
+        if (estado) {
+            query += ' AND estado = ?';
+            queryParams.push(estado);
+        }
+
+        if (pais) {
+            query += ' AND pais = ?';
+            queryParams.push(pais);
+        }
+        if (partido) {
+            query += ' AND partido = ?';
+            queryParams.push(partido);
+        }
+
+        const apuestas = await pool.query(query, queryParams);
+
+        res.render('apuestas/list', {
+            apuestas,
+            style: 'list.css',
+            navbar: 'navbar.css'
+        });
+    } catch (error) {
+        console.error('Error al obtener las apuestas:', error);
+        res.status(500).send('Error interno del servidor');
+    }
 });
 
 router.get('/delete/:id', isLoggedIn, async(req, res) => {

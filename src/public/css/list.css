@@ -1,4 +1,4 @@
-a{
+a {
     color: white;
 }
 
@@ -10,7 +10,7 @@ body {
 }
 
 h3 {
-    font-size:25px;
+    font-size: 25px;
     text-transform: uppercase;
 }
 
@@ -25,8 +25,12 @@ body::before {
     z-index: -1;
 }
 
+.card {
+    margin-bottom: 20px;
+}
+
 .card-body {
-    clear:left;
+    clear: left;
     height: 100%;
     width: 105%;
     background-color: white;
