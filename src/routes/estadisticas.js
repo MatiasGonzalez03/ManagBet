@@ -37,6 +37,7 @@ router.get('/', isLoggedIn, async(req, res) => {
             cantidadFallidas: cantidadFallidas[0].fallidas,
             cantidadAcertadas: cantidadAcertadas[0].acertadas,
             cantidadPendientes: cantidadPendientes[0].pendientes,
+            style: 'estadistica.css',
             navbar: 'navbar.css'
         });
     } catch (error) {

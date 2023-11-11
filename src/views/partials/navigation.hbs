@@ -17,12 +17,19 @@
                             <a href="/estadisticas" class="nav-link text-white">Mis estadisticas</a>
                         </li>   
                         <li class="nav-item">
-                            <a href="/profile" class="nav-link text-white">Mi perfil</a>
-                        </li>  
-                        <li class="nav-item">
-                            <a href="/logout" class="nav-link text-white">Cerrar sesion</a>
+                            <a href="/ia" class="nav-link text-white">Prediccion</a>
                         </li> 
+                        <li class="nav-item dropdown">
+                            <button class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                                {{user.nickname}}
+                            </button>
+                            <ul class="dropdown-menu dropdown-menu-primary">
+                                <li><a class="dropdown-item" href="/profile">Mi perfil</a></li>
+                                <li><a class="dropdown-item" href="/logout">Cerrar sesion</a></li>
+                            </ul>
+                        </li>
                     </ul>
+                    
                     
                 </div>
                 {{else}}
