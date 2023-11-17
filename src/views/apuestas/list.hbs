@@ -1,27 +1,50 @@
-<form action="/apuestas" method="GET">
-    <div class="form-group">
-        <label for="estado" style="color: white;">Filtrar por estado:</label>
-        <select class="form-control" id="estado" name="estado">
-            <option value="">Todos</option>
-            <option value="Pendiente">Pendiente</option>
-            <option value="Acertada">Acertada</option>
-            <option value="Fallada">Fallada</option>
-        </select>
-    </div>
-    <div class="form-group">
-        <label for="pais" style="color: white;">Filtrar por país:</label>
-        <select class="form-control" id="pais" name="pais">
-            <option value="">Todos</option>
-            <option value="Argentina">Argentina</option>
-        </select>
-    </div>
-      <div class="form-group">
-        <label for="partido" style="color: white;">Filtrar por partido:</label>
-        <input type="text" class="form-control" id="partido" name="partido" placeholder="Nombre del partido">
-    </div>
-    <button type="submit" class="btn btn-primary">Filtrar</button>
-</form>
+<br>
+<br>
+<div class="container">
+    <form class="form-inline" action="/apuestas" method="GET">
+        <div class="row">
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label for="estado" style="color: white;">Filtrar por estado:</label>
+                    <select class="form-control" id="estado" name="estado">
+                       <option value="">Todos</option>
+                        <option value="Pendiente">Pendiente</option>
+                        <option value="Acertada">Acertada</option>
+                        <option value="Fallada">Fallada</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label for="competicion" style="color: white;">Filtrar por Competición:</label>
+                    <select class="form-control" id="competicion" name="competicion">
+                        <option value="">Todos</option>
+                        <option value="Liga Profesional Argentina">Liga Profesional Argentina</option>
+                        <option value="Copa de la Liga Profesional">Copa de la Liga Profesional</option>
+                        <option value="Copa Argentina">Copa Argentina</option>
+                        <option value="Libertadores">Libertadores</option>
+                        <option value="Serie A Brasil">Serie A Brasil</option>
+                        <option value="Serie A Italia">Serie A Italia</option>
+                        <option value="La Liga">La Liga</option>
+                        <option value="Champions League">Champions League</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-md-5">
+                <div class="form-group">
+                    <label for="partido" style="color: white;">Filtrar por partido:</label>
+                    <input type="text" class="form-control" id="partido" name="partido" placeholder="Nombre del partido">
+                </div>
+            </div>
+            <div class="col-md-2">
+                <button type="submit" class="btn btn-primary btn-lg">Filtrar</button>
+            </div>
+        </div>
+    </form>
+</div>
 
+<br>
+<br>
 
 <div class="form-group">
             <div class="btn">
@@ -33,7 +56,7 @@
     <div class="row">
         {{#each apuestas}}
         <div class="col-md-3">
-            <div class="card">
+            <div class="card custom-card">
                 <div class="card-body">
                     <h3 class="card-title" >
                         {{partido}}
@@ -61,3 +84,19 @@
         {{/each}}
     </div>
 </div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const apuestas = document.querySelectorAll(".custom-card");
+        apuestas.forEach(apuesta => {
+            const estado = apuesta.querySelector('.m-2:nth-child(2)').textContent.split(": ")[1].trim();
+            if (estado === 'Acertada') {
+                apuesta.classList.add('border-primary');
+            } else if (estado === 'Fallada') {
+                apuesta.classList.add('border-danger');
+            }else if (estado === 'Pendiente') {
+                apuesta.classList.add('border-secondary');
+            }
+        });
+    });
+</script>

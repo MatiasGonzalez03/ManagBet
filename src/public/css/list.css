@@ -81,3 +81,15 @@ body::before {
     background: rgb(82, 180, 212);
     border-radius: 2px;
 }
+
+.border-primary {
+    border-width: 8px;
+}
+
+.border-danger {
+    border-width: 8px;
+}
+
+.border-secondary {
+    border-width: 8px;
+}

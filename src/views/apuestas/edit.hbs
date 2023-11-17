@@ -24,7 +24,17 @@
                             <input type="text"  value="{{ apuestas.pais }}" name="pais" class="form-control" placeholder="Pais">
                         </div>
                         <div class="form-group">
-                            <input type="text" value="{{ apuestas.competicion }}" name="competicion" class="form-control" placeholder="Competicion">
+                            <select class="form-control" name="competicion">
+                                <option>{{ apuestas.competicion }}</option>
+                                <option value="Liga Profesional Argentina">Liga Profesional Argentina</option>
+                                <option value="Copa de la Liga Profesional">Copa de la Liga Profesional</option>
+                                <option value="Copa Argentina">Copa Argentina</option>
+                                <option value="Libertadores">Libertadores</option>
+                                <option value="Serie A Brasil">Serie A Brasil</option>
+                                <option value="Serie A Italia">Serie A Italia</option>
+                                <option value="La Liga">La Liga</option>
+                                <option value="Champions League">Champions League</option>
+                            </select>
                         </div>
                         <div class="form-group">
                             <input type="text" value="{{ apuestas.partido }}" name="partido" class="form-control" placeholder="Partido">

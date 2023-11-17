@@ -36,16 +36,16 @@ router.get('/', isLoggedIn, async(req, res) => {
         let query = 'SELECT * FROM apuestas WHERE usuario_id = ?';
         const queryParams = [usuario_id];
 
-        const { estado, pais, partido } = req.query;
+        const { estado, competicion, partido } = req.query;
 
         if (estado) {
             query += ' AND estado = ?';
             queryParams.push(estado);
         }
 
-        if (pais) {
-            query += ' AND pais = ?';
-            queryParams.push(pais);
+        if (competicion) {
+            query += ' AND competicion = ?';
+            queryParams.push(competicion);
         }
         if (partido) {
             query += ' AND partido = ?';
