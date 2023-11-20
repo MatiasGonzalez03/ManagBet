@@ -31,15 +31,14 @@ CREATE TABLE apuestas (
   /*
   bookie_id int(11) NOT NULL,
   */
-  dinero varchar(45) NOT NULL,
+  dinero int(45) NOT NULL,
   cuota float NOT NULL,
   estado varchar(45) NOT NULL,
-  stake varchar(2) NOT NULL,
-  pais varchar(45) NOT NULL,
-  competicion varchar(45) NOT NULL,
-  partido varchar(45) NOT NULL,
+  stake tinyint(2) NOT NULL,
+  competicion varchar(120) NOT NULL,
+  partido varchar(80) NOT NULL,
   pronostico varchar(45) NOT NULL,
-  fecha datetime NOT NULL,
+  fecha date NOT NULL,
   created_at timestamp NOT NULL DEFAULT current_timestamp,
   /*
   KEY `idBookie_idx` (`idBookie`),

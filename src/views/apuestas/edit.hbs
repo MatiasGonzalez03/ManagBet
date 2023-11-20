@@ -21,9 +21,6 @@
                             <input type="number" value="{{ apuestas.stake }}" name="stake" class="form-control" placeholder="Stake">
                         </div>
                         <div class="form-group">
-                            <input type="text"  value="{{ apuestas.pais }}" name="pais" class="form-control" placeholder="Pais">
-                        </div>
-                        <div class="form-group">
                             <select class="form-control" name="competicion">
                                 <option>{{ apuestas.competicion }}</option>
                                 <option value="Liga Profesional Argentina">Liga Profesional Argentina</option>
@@ -41,6 +38,9 @@
                         </div>
                         <div class="form-group">
                             <input type="text" value="{{ apuestas.pronostico }}" name="pronostico" class="form-control" placeholder="Pronostico">
+                        </div>
+                        <div class="form-group">
+                            <input type="date" class="form-control" name="fecha" value="{{ formatDate apuestas.fecha }}" min="2023-01-01" max="2024-12-31" />
                         </div>
                         <div class="form-group">
                             <button class="btn">

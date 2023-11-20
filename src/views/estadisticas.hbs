@@ -12,8 +12,12 @@
             <div class="card-body">
                 <p class="card-text">Suma total apostada: <strong>${{sumaDineroApostado}}</strong></p>
                 <p class="card-text">Promedio de dinero apostado por apuesta: <strong>${{promedioDineroApostado}}</strong></p>
-                <p class="card-text">Apuesta más alta: <strong>${{apuestaMasAlta}}</strong></p>
-                <p class="card-text">Apuesta más baja: <strong>${{apuestaMasBaja}}</strong></p>
+                <p class="card-text"> Apuesta más alta: <strong>${{apuestaMasAlta}}</strong>
+                    <a href="/apuestas/edit/{{idApuestaMasAlta}}" class="btn btn-primary ml-2">Ver</a>
+                </p>
+                <p class="card-text">Apuesta más baja: <strong>${{apuestaMasBaja}}</strong>
+                    <a href="/apuestas/edit/{{idApuestaMasBaja}}" class="btn btn-primary ml-2">Ver</a>
+                </p>
             </div>
         </div>
         <div class="card">
@@ -21,6 +25,12 @@
                 <p class="card-text">Total ganado: <strong>${{gananciaTotal}}</strong></p>
                 <p class="card-text">Total perdido: <strong>${{perdidaTotal}}</strong></p>
                 <p class="card-text">Ganancia/Perdida: <strong>${{gananciaPerdida}}</strong></p>
+                <p class="card-text">Apuesta con mayor ganancia: <strong>${{mayorGanancia}}</strong>
+                <a href="/apuestas/edit/{{idMayorGanancia}}" class="btn btn-primary ml-2">Ver</a>
+                </p>
+                <p class="card-text">Apuesta con mayor perdida: <strong>${{mayorPerdida}}</strong>
+                <a href="/apuestas/edit/{{idMayorPerdida}}" class="btn btn-primary ml-2">Ver</a>
+                </p>
             </div>
         </div>
         

@@ -12,16 +12,16 @@ router.get('/add', isLoggedIn, (req, res) => {
 });
 
 router.post('/add', isLoggedIn, async(req, res) => {
-    const { dinero, cuota, estado, stake, pais, competicion, partido, pronostico, usuario_id } = req.body;
+    const { dinero, cuota, estado, stake, competicion, partido, pronostico, fecha, usuario_id } = req.body;
     const newApuesta = {
         dinero,
         cuota,
         estado,
         stake,
-        pais,
         competicion,
         partido,
         pronostico,
+        fecha,
         usuario_id: req.user.id
     };
     await pool.query('INSERT INTO apuestas set ?', [newApuesta]);
@@ -36,7 +36,7 @@ router.get('/', isLoggedIn, async(req, res) => {
         let query = 'SELECT * FROM apuestas WHERE usuario_id = ?';
         const queryParams = [usuario_id];
 
-        const { estado, competicion, partido } = req.query;
+        const { estado, competicion, partido, fechaInicio, fechaFin } = req.query;
 
         if (estado) {
             query += ' AND estado = ?';
@@ -50,6 +50,11 @@ router.get('/', isLoggedIn, async(req, res) => {
         if (partido) {
             query += ' AND partido = ?';
             queryParams.push(partido);
+        }
+
+        if (fechaInicio && fechaFin) {
+            query += ' AND fecha BETWEEN ? AND ?';
+            queryParams.push(fechaInicio, fechaFin);
         }
 
         const apuestas = await pool.query(query, queryParams);
@@ -85,16 +90,16 @@ router.get('/edit/:id', isLoggedIn, async(req, res) => {
 
 router.post('/edit/:id', isLoggedIn, async(req, res) => {
     const { id } = req.params;
-    const { dinero, cuota, estado, stake, pais, competicion, partido, pronostico } = req.body;
+    const { dinero, cuota, estado, stake, competicion, partido, pronostico, fecha } = req.body;
     const newApuesta = {
         dinero,
         cuota,
         estado,
         stake,
-        pais,
         competicion,
         partido,
         pronostico,
+        fecha,
     };
     await pool.query('UPDATE apuestas set ? WHERE id = ?', [newApuesta, id]);
     req.flash('success', 'Apuesta modificada exitosamente');

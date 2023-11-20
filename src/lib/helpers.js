@@ -1,5 +1,6 @@
 const bcrypt = require('bcryptjs');
 const helpers = {};
+const handlebars = require('handlebars');
 
 helpers.encryptPassword = async(password) => {
     const salt = await bcrypt.genSalt(10);
@@ -14,5 +15,11 @@ helpers.matchPassword = async(password, savedPassword) => {
         console.log(e)
     }
 };
+
+handlebars.registerHelper('formatDate', function(date) {
+    const formattedDate = new Date(date).toISOString().split('T')[0];
+    return formattedDate;
+});
+
 
 module.exports = helpers;
