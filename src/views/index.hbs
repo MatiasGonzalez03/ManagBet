@@ -1,104 +1,179 @@
-<header class="main-header">
+<!DOCTYPE html>
+<html lang="es">
 
-   
-   <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
-        <div class="carousel-inner">
-            <div class="carousel-item active">
-                <div class="overlay-image" style="background-image:url(img/caro1.jpg)"></div>
-                <div class="carousel-caption">
-                    <h1>Bienvenido a Managbet</h1>
-                    <p>La mejor plataforma de gestion de apuestas deportivas</p>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Index</title>
+    <link rel="shortcut icon" href="./images/favicon.png" type="image/x-icon">
+    <link rel="stylesheet" href="./css/index.css">
+
+    <meta name="theme-color" content="#2091F9">
+
+<body>
+
+    <header class="hero">
+        <nav class="nav container">
+
+            <ul class="nav__link nav__link--menu">
+                <img src="img/menu.svg" class="nav__close">
+            </ul>
+
+            <div class="nav__menu">
+                <img src="img/menu.svg" class="nav__img">
+            </div>
+        </nav>
+
+        <section class="hero__container container">
+            <h1 class="hero__title">Bienvenido a Managbet</h1>
+            <p class="hero__paragraph">La mejor plataforma de gestion de apuestas deportivas</p>
+            <a href="/apuestas" class="cta">Comienza ahora</a>
+        </section>
+    </header>
+
+    <main>
+        <section class="container about">
+            <h2 class="subtitle">¿Qué podrás hacer con Managbet?</h2>
+            <p class="about__paragraph">Somos la plataforma de gestión de apuestas deportivas mas segura del mercado</p>
+
+            <div class="about__main">
+                <article class="about__icons">
+                    <img src="img/computer.svg" class="about__icon">
+                    <h3 class="about__title">Mis Apuestas</h3>
+                    <p class="about__paragrah">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quae tempore
+                        porro eius facilis?</p>
+                </article>
+
+                <article class="about__icons">
+                    <img src="img/api.svg" class="about__icon">
+                    <h3 class="about__title">IA Integrada</h3>
+                    <p class="about__paragrah">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quae tempore
+                        porro eius facilis?</p>
+                </article>
+
+                <article class="about__icons">
+                    <img src="img/grafico.svg" class="about__icon">
+                    <h3 class="about__title">Estadisticas</h3>
+                    <p class="about__paragrah">Tenemos un apartado dedicado a todas las estadisticas de tus apuestas en tiempo real</p>
+                </article>
+            </div>
+        </section>
+
+        <section class="knowledge">
+            <div class="knowledge__container container">
+                <div class="knowledege__texts">
+                    <h2 class="subtitle">Estadististicas de todo tipo ¡En tiempo real!</h2>
+                    <p class="knowledge__paragraph">En base a las apuestas realizadas por parte del usuario se formarán distintas estadísticas, las cuales reflejarán la ganancia y/o pérdida de dinero en un lapso de tiempo determinado, la cantidad de apuestas realizadas, el porcentaje de apuestas acertadas y falladas, mejor y peor apuesta, registros mensuales u otros datos de interés.</p>
+                    <a href="/estadisticas" class="cta">Mira tus Estadisticas</a>
                 </div>
+
+                <figure class="knowledge__picture">
+                    <img src="img/caro2.jpg" class="knowledge__img">
+                </figure>
             </div>
-            <div class="carousel-item">
-                <div class="overlay-image" style="background-image:url(img/caro1.jpg)"></div>
-                <div class="carousel-caption">
-                    <h1>Bienvenido a Managbet</h1>
-                    <p>Bienvenido a Managbet</p>
-                </div>
-            </div>
-            <div class="carousel-item">
-                <div class="overlay-image" style="background-image:url(img/caro1.jpg)"></div>
-                <div class="carousel-caption">
-                    <h1>Bienvenido a Managbet</h1>
-                    <p>Bienvenido a Managbet</p>
-                </div>
-            </div>
-        </div>
+        </section>
 
-        <a class="carousel-control-prev" href="#myCarousel" role="button" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Anterior</span>
-        </a>
-        <a class="carousel-control-next" href="#myCarousel" role="button" data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Siguiente</span>
-        </a>
-    </div>
-
-
-    <div class="container-flu bg-primary text-white" style="padding-top: 10px;">
-
-        <hr class="featurette-divider">
-
-        <div class="row featurette">
-            <div class="col-md-7">
-                <h2 class="featurette-heading fw-normal lh-1 ">¿Que podras realizar <span class="text-body-secondary ">con Managbet?</span></h2>
-                <p class="lead ">Sera posible visualizar y gestionar diferentes tipos de apuestas sobre fútbol, las cuales puedan recibir un seguimiento por parte del usuario, con estadísticas y datos de interés tales como el monitoreo de sus ganancias y pérdidas, recuentos mensuales, entre otras funcionalidades sociales como la interacción y comunicación entre usuarios del sistema</p>
-            </div>
-            <div class="col-md-5 image-overlay">
-                <img src="img/caro2.jpg " alt=" " class="img-fluid ">
-            </div>
-        </div>
-
-        <hr class="featurette-divider ">
-
-        <div class="row featurette">
-            <div class="col-md-7 order-md-2">
-                <h2 class="featurette-heading fw-normal lh-1 ">Estadisticas <span class="text-body-secondary ">A tiempo real</span></h2>
-                <p class="lead ">En base a las apuestas realizadas por parte del usuario se formarán distintas estadísticas, las cuales reflejarán la ganancia y/o pérdida de dinero en un lapso de tiempo determinado, la cantidad de apuestas realizadas, el porcentaje de apuestas acertadas y falladas, mejor y peor apuesta, registros mensuales u otros datos de interés. 
-                    </p>
-            </div>
-            <div class="col-md-5 order-md-1 image-overlay">
-                <img src="img/caro3.jpg " alt=" " class="img-fluid ">
-            </div>
-        </div>
-
-        <hr class="featurette-divider">
-
-        <div class="row featurette">
-            <div class="col-md-7">
-                <h2 class="featurette-heading fw-normal lh-1 ">¿Puedo apostar<span class="text-body-secondary "> en Managbet?</span></h2>
-                <p class="lead "> Es importante recalcar que Managbet NO es un sitio de apuestas deportivas, siendo una plataforma donde el usuario podra gestionar y monitorear sus apuestas realizadas en OTROS sitios web</p>
-            </div>
-            <div class="col-md-5 image-overlay">
-                <img src="img/caro4.jpeg " alt=" " class="img-fluid ">
-            </div>
-        </div>
-
-        <!--
-        <div id="separador">
-            <div class="content bg-white "></div>
-        </div>
--->
-        <hr class="featurette-divider ">
-        <div class="row featurette text-center bg-primary text-white ">
-            <h3 class="text-white ">¿Que nos impulsó a realizar este proyecto?</h3>
-            <p>El principal problema el cual impulsó este proyecto es la pérdida de control en las apuestas deportivas, el apostador, al apostar en diversas bookies, pierde una estadística real y centralizada de todas las apuestas que efectúa y en consecuencia,
+        <section class="testimony">
+            <div class="testimony__container container">
+                <section class="testimony__body testimony__body--show" data-id="1">
+                    <div class="testimony__texts">
+                        <h2 class="subtitle">¿Porque es importante que una plataforma como Managbet exista?<span class="testimony__cours"></span></h2>
+                        <p class="testimony__review">Managbet viene a poner fin a un problema que esta cada vez más en auge en nuestra sociedad: La pérdida de control en las apuestas deportivas, donde el apostador, al apostar en diversas bookies, pierde una estadística real y centralizada de todas las apuestas que efectúa y en consecuencia,
                 se le dificulta el control y seguimiento de las mismas. Esto se suma a que las casas de apuestas suelen ser muy poco transparentes a la hora de brindar herramientas de control a sus usuarios, lo cual es lógico ya que un gran amplio porcentaje
                 de ganancias llega a través de los usuarios que no llevan una gestión de sus cuentas y que apuestan de una manera desorganizada.
-            </p>
-        </div>
+            </p></p>
+                    </div>
 
-        <hr class="featurette-divider ">
+                    <figure class="testimony__picture">
+                        <img src="img/hombre.avif" class="testimony__img">
+                    </figure>
+                </section>
 
-    </div>
+            </div>
+        </section>
 
+        <section class="questions container">
+            <h2 class="subtitle">Preguntas frecuentes</h2>
+            <p class="questions__paragraph">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ea, porro
+                doloribus neque perspiciatis sapiente fuga.</p>
 
-    <footer class="container text-center text-light">
-        <p class="float-end "><a href="# ">Back to top</a></p>
-        <p>&copy; 2023 Company, Inc. &middot; <a href="# ">Privacy</a> &middot; <a href="# ">Terms</a></p>
+            <section class="questions__container">
+                <article class="questions__padding">
+                    <div class="questions__answer">
+                        <h3 class="questions__title">¿Qué es Managbet?
+                        </h3>
+
+                        <p class="questions__show">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quos
+                            facere, quidem eum id excepturi assumenda explicabo nam accusamus veritatis voluptates
+                            eveniet adipisci, dicta nihil nemo modi possimus officiis quam atque? Lorem ipsum, dolor sit
+                            amet consectetur adipisicing elit. Quos facere, quidem eum id excepturi assumenda explicabo
+                            nam accusamus veritatis voluptates eveniet adipisci, dicta nihil nemo modi possimus officiis
+                            quam atque?</p>
+                    </div>
+                </article>
+
+                <article class="questions__padding">
+                    <div class="questions__answer">
+                        <h3 class="questions__title">¿Puedo apostar en Managbet?
+                        </h3>
+
+                        <p class="questions__show">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quos
+                            facere, quidem eum id excepturi assumenda explicabo nam accusamus veritatis voluptates
+                            eveniet adipisci, dicta nihil nemo modi possimus officiis quam atque? Lorem ipsum, dolor sit
+                            amet consectetur adipisicing elit. Quos facere, quidem eum id excepturi assumenda explicabo
+                            nam accusamus veritatis voluptates eveniet adipisci, dicta nihil nemo modi possimus officiis
+                            quam atque?</p>
+                    </div>
+                </article>
+
+                <article class="questions__padding">
+                    <div class="questions__answer">
+                        <h3 class="questions__title">¿Qué podrás realizar con Managbet?
+                        </h3>
+
+                        <p class="questions__show">Sera posible visualizar y gestionar diferentes tipos de apuestas sobre fútbol, las cuales puedan recibir un seguimiento por parte del usuario, con estadísticas y datos de interés tales como el monitoreo de sus ganancias y pérdidas, recuentos mensuales, entre otras funcionalidades sociales como la interacción y comunicación entre usuarios del sistema.</p>
+                    </div>
+                </article>
+            </section>
+
+            
+        </section>
+
+        <section class="questions__offer">
+                <h2 class="subtitle">¿Estas listo para empezar a utilizar Managbet?</h2>
+                <p class="questions__copy">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Amet ratione
+                    architecto magnam, officiis ex porro vero est voluptates quaerat quibusdam illo veniam reprehenderit
+                    eius atque tempora iure ab non autem.</p>
+                <a href="/apuestas" class="ctaa">Comienza ahora</a>
+        </section>
+    </main>
+
+    <footer class="footer">
+
+        <section class="footer__copy container">
+            <form class="footer__form" action="https://formspree.io/f/mknkkrkj" method="POST">
+                <h2 class="footer__newsletter">Suscribete al newsletter</h2>
+                <div class="footer__inputs">
+                    <input type="email" placeholder="Email:" class="footer__input" name="_replyto">
+                    <input type="submit" value="Registrate" class="footer__submit">
+                </div>
+            </form>
+
+            <div class="footer__social">
+                <a href="#" class="footer__icons"><img src="img/facebook.svg" class="footer__img"></a>
+                <a href="#" class="footer__icons"><img src="img/twitter.svg" class="footer__img"></a>
+                <a href="#" class="footer__icons"><img src="img/youtube.svg" class="footer__img"></a>
+            </div>
+
+            <h3 class="footer__copyright">Derechos reservados &copy; Managbet</h3>
+        </section>
     </footer>
-    
-<header>
+
+    <script src="./js/slider.js"></script>
+    <script src="./js/questions.js"></script>
+    <script src="./js/menu.js"></script>
+</body>
+
+</html>
 

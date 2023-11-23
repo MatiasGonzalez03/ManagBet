@@ -24,6 +24,7 @@ passport.use('local.signin', new LocalStrategy({
 }));
 
 
+/*
 passport.use('local.signup', new LocalStrategy({
     usernameField: 'nickname',
     passwordField: 'password',
@@ -40,6 +41,42 @@ passport.use('local.signup', new LocalStrategy({
     console.log(result)
     newUser.id = result.insertId;
     return done(null, newUser);
+}));
+*/
+
+
+passport.use('local.signup', new LocalStrategy({
+    usernameField: 'nickname',
+    passwordField: 'password',
+    passReqToCallback: true
+}, async(req, nickname, password, done) => {
+    const { email } = req.body;
+
+    // Verificar si el correo electrónico ya está en uso
+    const existingEmail = await pool.query('SELECT * FROM usuarios WHERE email = ?', [email]);
+
+    if (existingEmail.length > 0) {
+        return done(null, false, req.flash('message', 'El correo electrónico ya está registrado'));
+    } else {
+        // Verificar si el nickname ya está en uso
+        const existingUser = await pool.query('SELECT * FROM usuarios WHERE nickname = ?', [nickname]);
+
+        if (existingUser.length > 0) {
+            return done(null, false, req.flash('message', 'El nombre de usuario ya está en uso'));
+        } else {
+            const newUser = {
+                nickname,
+                password,
+                email
+            };
+
+            newUser.password = await helpers.encryptPassword(password);
+            const result = await pool.query('INSERT INTO usuarios SET ? ', [newUser]);
+
+            newUser.id = result.insertId;
+            return done(null, newUser);
+        }
+    }
 }));
 
 

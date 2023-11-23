@@ -1,4 +1,5 @@
 <div class="container mt-5">
+            {{#if totalApuestas}}
         <h1 class="mb-4">Estadísticas de Apuestas</h1>
         <div class="card">
             <div class="card-body">
@@ -24,7 +25,7 @@
             <div class="card-body">
                 <p class="card-text">Total ganado: <strong>${{gananciaTotal}}</strong></p>
                 <p class="card-text">Total perdido: <strong>${{perdidaTotal}}</strong></p>
-                <p class="card-text">Ganancia/Perdida: <strong>${{gananciaPerdida}}</strong></p>
+                <p class="card-text">Ganancia/Perdida: <strong class="color-change">${{gananciaPerdida}}</strong></p>
                 <p class="card-text">Apuesta con mayor ganancia: <strong>${{mayorGanancia}}</strong>
                 <a href="/apuestas/edit/{{idMayorGanancia}}" class="btn btn-primary ml-2">Ver</a>
                 </p>
@@ -33,5 +34,31 @@
                 </p>
             </div>
         </div>
-        
+        {{else}}
+        <div class="col-md-4 mx-auto">
+            <div class="card card-body text-center">
+                <p>No hay ninguna apuesta creada aun.</p>
+                <a href="/apuestas/add">Crear una</a>
+            </div>
+        </div>
+        {{/if}}
 </div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+    const elements = document.querySelectorAll('.color-change');
+    elements.forEach(function (element) {
+        const valueWithCurrency = element.textContent.trim();
+        const value = parseFloat(valueWithCurrency.replace('$', ''));
+
+        if (!isNaN(value)) {
+            if (value >= 0) {
+                element.style.color = 'green';
+            } else {
+                element.style.color = 'red';
+            }
+        }
+    });
+});
+
+</script>
