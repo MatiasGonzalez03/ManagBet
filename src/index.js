@@ -54,6 +54,7 @@ app.use('/apuestas', require('./routes/apuestas'));
 app.use('/estadisticas', require('./routes/estadisticas'));
 app.use('/ia', require('./routes/ia'));
 
+
 // public
 app.use(express.static(path.join(__dirname, 'public')));
 

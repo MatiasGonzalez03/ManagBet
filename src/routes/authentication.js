@@ -4,6 +4,8 @@ const router = express.Router();
 const passport = require('passport');
 const { isLoggedIn, isNotLoggedIn } = require('../lib/auth');
 
+
+
 router.get('/signup', isNotLoggedIn, (req, res) => {
     res.render('auth/signup', {
         style: 'login.css',
@@ -32,6 +34,8 @@ router.post('/signin', isNotLoggedIn, (req, res, next) => {
         })
         (req, res, next);
 });
+
+
 
 router.get('/profile', isLoggedIn, (req, res) => {
     res.render('profile', {

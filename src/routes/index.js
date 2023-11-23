@@ -3,7 +3,7 @@ const router = express.Router();
 
 router.get('/', (req, res) => {
     res.render('index', {
-        style: 'main.css',
+        style: 'index.css',
         navbar: 'navbar.css'
     })
 })
