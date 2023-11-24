@@ -24,32 +24,42 @@ router.get('/', isLoggedIn, async(req, res) => {
         const perdidaTotal = await pool.query('SELECT SUM(CASE WHEN estado = \'Fallada\' THEN (dinero) ELSE 0 END) AS perdidas FROM apuestas WHERE usuario_id = ?', [usuario_id]);
         const gananciaPerdida = 0;
 
-        //const mayorGanancia = await pool.query('SELECT id, (dinero * cuota - dinero) AS ganancia FROM apuestas WHERE estado = \'Acertada\' AND usuario_id = ? ORDER BY ganancia DESC LIMIT 1', [usuario_id]);
-        //const mayorPerdida = await pool.query('SELECT id, MAX(dinero + 0) AS perdida FROM apuestas WHERE estado = \'Fallada\' AND usuario_id = ?', [usuario_id]);
-
-        //const mayorGanancia = await pool.query('SELECT id, (dinero * cuota - dinero) AS ganancia FROM apuestas WHERE estado = \'Acertada\' AND usuario_id = ? ORDER BY ganancia DESC LIMIT 1', [usuario_id]);
-        //const mayorPerdida = await pool.query('SELECT id, MAX(dinero + 0) AS perdida FROM apuestas WHERE estado = \'Fallada\' AND usuario_id = ?', [usuario_id]);
         const mayorGanancia = await pool.query('SELECT id, (CASE WHEN estado = \'Acertada\' THEN (dinero * cuota - dinero) ELSE 0 END) AS ganancia FROM apuestas WHERE usuario_id = ? ORDER BY ganancia DESC LIMIT 1', [usuario_id]);
         const mayorPerdida = await pool.query('SELECT id, (CASE WHEN estado = \'Fallada\' THEN (dinero) ELSE 0 END) AS perdida FROM apuestas WHERE usuario_id = ? ORDER BY perdida DESC LIMIT 1', [usuario_id]);
-        //const mayorGanancia = await pool.query('SELECT id, IFNULL((dinero * cuota - dinero), 0) AS ganancia FROM apuestas WHERE estado = \'Acertada\' AND usuario_id = ? ORDER BY ganancia DESC LIMIT 1', [usuario_id]);
-
-        /*
-                const idMayorGanancia = await pool.query('SELECT id FROM apuestas WHERE (dinero * cuota - dinero) = ?', [mayorGanancia[0].ganancia]);
-                const idMayorPerdida = await  pool.query('SELECT id FROM apuestas WHERE MAX(dinero) AND = ?', [mayorPerdida[0].perdida]);
-        */
         const idMayorGanancia = mayorGanancia;
         const idMayorPerdida = mayorPerdida;
+        const menorGanancia = await pool.query('SELECT id, (CASE WHEN estado = \'Acertada\' THEN (dinero * cuota - dinero) ELSE 0 END) AS ganancia FROM apuestas WHERE usuario_id = ? AND estado = \'Acertada\' ORDER BY ganancia ASC LIMIT 1', [usuario_id]);
+        const menorPerdida = await pool.query('SELECT id, (CASE WHEN estado = \'Fallada\' THEN (dinero) ELSE 0 END) AS perdida FROM apuestas WHERE usuario_id = ? AND estado = \'Fallada\' ORDER BY perdida ASC LIMIT 1', [usuario_id]);
+
+        //const menorPerdida = await pool.query('SELECT id, (CASE WHEN estado = \'Fallada\' THEN (dinero) ELSE 0 END) AS perdida FROM apuestas WHERE usuario_id = ? ORDER BY perdida LIMIT 1', [usuario_id]);
+        //const menorGanancia = await pool.query('SELECT id, (CASE WHEN estado = \'Acertada\' THEN (dinero * cuota - dinero) ELSE 0 END) AS ganancia FROM apuestas WHERE usuario_id = ? ORDER BY ganancia LIMIT 1', [usuario_id]);
+        const idMenorGanancia = menorGanancia;
+        const idMenorPerdida = menorPerdida;
 
 
+        const mayorArriesgada = await pool.query('SELECT id, cuota, dinero, (CASE WHEN estado = \'Acertada\'  THEN (dinero + 0) ELSE 0 END) AS apuesta FROM apuestas WHERE usuario_id = ? AND estado = \'Acertada\' ORDER BY cuota DESC LIMIT 1', [usuario_id])
+        const idMayorArriesgada = mayorArriesgada;
 
-        /* ACIERTOS                 FALLOS
-        totalganancia               totalperdida
-        apuestamayorganancia        apuestamayorperdida
-        apuestamasarriesgada        apuestamasarriesgada
+        const mayorArriesgadaPerdida = await pool.query('SELECT id, cuota, dinero, (CASE WHEN estado = \'Fallada\'  THEN (dinero + 0) ELSE 0 END) AS apuesta FROM apuestas WHERE usuario_id = ? AND estado = \'Fallada\' ORDER BY cuota DESC LIMIT 1', [usuario_id])
+        const idMayorArriesgadaPerdida = mayorArriesgadaPerdida;
 
-        */
 
-        if (totalApuestas[0].total === 0) {
+        const totalApuestasPorcentaje = cantidadFallidas[0].fallidas + cantidadAcertadas[0].acertadas;
+        const porcentajeFallidas = (cantidadFallidas[0].fallidas / totalApuestasPorcentaje) * 100;
+        const porcentajeAcertadas = (cantidadAcertadas[0].acertadas / totalApuestasPorcentaje) * 100;
+
+        const totalDineroApostado = gananciaTotal[0].ganancias + perdidaTotal[0].perdidas;
+        const porcentajeGanancia = (gananciaTotal[0].ganancias / totalDineroApostado) * 100;
+        const porcentajePerdida = (perdidaTotal[0].perdidas / totalDineroApostado) * 100;
+        /*
+                if (totalApuestas[0].total === 0) {
+                    return res.render('estadisticas', {
+                        style: 'estadistica.css',
+                        navbar: 'navbar.css'
+                    });
+                } 
+                */
+        if (cantidadFallidas[0].fallidas === 0 || cantidadAcertadas[0].acertadas === 0) {
             return res.render('estadisticas', {
                 style: 'estadistica.css',
                 navbar: 'navbar.css'
@@ -60,8 +70,8 @@ router.get('/', isLoggedIn, async(req, res) => {
                 cantidadFallidas: cantidadFallidas[0].fallidas,
                 cantidadAcertadas: cantidadAcertadas[0].acertadas,
                 cantidadPendientes: cantidadPendientes[0].pendientes,
-                sumaDineroApostado: sumaDineroApostado[0].suma,
-                promedioDineroApostado: promedioDineroApostado[0].promedio,
+                sumaDineroApostado: sumaDineroApostado[0].suma.toFixed(0),
+                promedioDineroApostado: promedioDineroApostado[0].promedio.toFixed(0),
                 apuestaMasAlta: apuestaMasAlta[0].maximo,
                 idApuestaMasAlta: idApuestaMasAlta[0].id,
                 idApuestaMasBaja: idApuestaMasBaja[0].id,
@@ -73,6 +83,18 @@ router.get('/', isLoggedIn, async(req, res) => {
                 idMayorGanancia: idMayorGanancia[0].id,
                 idMayorPerdida: idMayorPerdida[0].id,
                 mayorPerdida: mayorPerdida[0].perdida.toFixed(0),
+                menorGanancia: menorGanancia[0].ganancia.toFixed(0),
+                menorPerdida: menorPerdida[0].perdida.toFixed(0),
+                idMenorGanancia: idMenorGanancia[0].id,
+                idMenorPerdida: idMenorPerdida[0].id,
+                mayorArriesgada: mayorArriesgada[0].apuesta.toFixed(0),
+                idMayorArriesgada: idMayorArriesgada[0].id,
+                mayorArriesgadaPerdida: mayorArriesgadaPerdida[0].apuesta.toFixed(0),
+                idMayorArriesgadaPerdida: idMayorArriesgadaPerdida[0].id,
+                porcentajeFallidas,
+                porcentajeAcertadas,
+                porcentajeGanancia: porcentajeGanancia.toFixed(0),
+                porcentajePerdida: porcentajePerdida.toFixed(0),
                 style: 'estadistica.css',
                 navbar: 'navbar.css'
             });

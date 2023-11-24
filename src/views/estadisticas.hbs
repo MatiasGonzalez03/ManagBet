@@ -1,44 +1,99 @@
 <div class="container mt-5">
             {{#if totalApuestas}}
-        <h1 class="mb-4">Estadísticas de Apuestas</h1>
-        <div class="card">
-            <div class="card-body">
-                <p class="card-text">Total de apuestas: <strong>{{totalApuestas}}</strong></p>
-                <p class="card-text">Cantidad de apuestas acertadas: <strong>{{cantidadAcertadas}}</strong></p>
-                <p class="card-text">Cantidad de apuestas fallidas: <strong>{{cantidadFallidas}}</strong></p>
-                <p class="card-text">Cantidad de apuestas pendientes: <strong>{{cantidadPendientes}}</strong></p>
+        <h1 class="mb-4 text-center" style="color: white;">Estadísticas de Apuestas</h1>
+         <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                            <h3 class="card-title text-center" >GANANCIA/PERDIDA</h3>
+                            <h2 class="card-text text-center"><strong class="color-change">${{gananciaPerdida}}</strong></h2>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3"></div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-md-5">
+                <div class="card">
+                    <div class="card-body">
+                        <h3 class="card-title text-center" >ACIERTOS</h3>
+                        <br>
+                        <p class="card-text">Cantidad de apuestas acertadas: <strong>{{cantidadAcertadas}}</strong></p>
+                        <p class="card-text">Total ganado: <strong>${{gananciaTotal}}</strong></p>
+                        <p class="card-text" style="color:green">Porcentaje de apuestas acertadas <strong>{{porcentajeFallidas}}%</strong></p>
+                        <p class="card-text" style="color:green">Porcentaje ganancia <strong>{{porcentajeGanancia}}%</strong></p>
+                        <p class="card-text">Apuesta con mayor ganancia: <strong>${{mayorGanancia}}</strong>
+                        <a href="/apuestas/edit/{{idMayorGanancia}}" class="btn btn-primary ml-2">Ver</a>
+                        </p>
+                          
+                        <p class="card-text">Apuesta con menor ganancia: <strong>${{menorGanancia}}</strong>
+                        <a href="/apuestas/edit/{{idMenorGanancia}}" class="btn btn-primary ml-2">Ver</a>
+                        </p>
+                        <p class="card-text">Apuesta mas riesgosa: <strong>${{mayorArriesgada}}</strong>
+                        <a href="/apuestas/edit/{{idMayorArriesgada}}" class="btn btn-primary ml-2">Ver</a>
+                        </p>
+                         
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-2 mt-3">
+                
+            </div>
+            <div class="col-md-5">
+                <div class="card">
+                    <div class="card-body">
+                        <h3 class="card-title text-center" >FALLOS</h3>
+                        <br>
+                        <p class="card-text">Cantidad de apuestas fallidas: <strong>{{cantidadFallidas}}</strong></p>
+                        <p class="card-text">Total perdido: <strong>${{perdidaTotal}}</strong></p>
+                        <p class="card-text" style="color:red">Porcentaje de apuestas falladas <strong>{{porcentajeAcertadas}}%</strong></p>
+                        <p class="card-text" style="color:red">Porcentaje perdida <strong>{{porcentajePerdida}}%</strong></p>
+                        <p class="card-text">Apuesta con mayor perdida: <strong>${{mayorPerdida}}</strong>
+                        <a href="/apuestas/edit/{{idMayorPerdida}}" class="btn btn-primary ml-2">Ver</a>
+                        </p>
+                         
+                        <p class="card-text">Apuesta con menor perdida: <strong>${{menorPerdida}}</strong>
+                        <a href="/apuestas/edit/{{idMenorPerdida}}" class="btn btn-primary ml-2">Ver</a>
+                        </p>
+                        <p class="card-text">Apuesta mas riesgosa: <strong>${{mayorArriesgadaPerdida}}</strong>
+                        <a href="/apuestas/edit/{{idMayorArriesgadaPerdida}}" class="btn btn-primary ml-2">Ver</a>
+                        </p>
+                        
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="card">
-            <div class="card-body">
-                <p class="card-text">Suma total apostada: <strong>${{sumaDineroApostado}}</strong></p>
-                <p class="card-text">Promedio de dinero apostado por apuesta: <strong>${{promedioDineroApostado}}</strong></p>
-                <p class="card-text"> Apuesta más alta: <strong>${{apuestaMasAlta}}</strong>
-                    <a href="/apuestas/edit/{{idApuestaMasAlta}}" class="btn btn-primary ml-2">Ver</a>
-                </p>
-                <p class="card-text">Apuesta más baja: <strong>${{apuestaMasBaja}}</strong>
-                    <a href="/apuestas/edit/{{idApuestaMasBaja}}" class="btn btn-primary ml-2">Ver</a>
-                </p>
+        <br>
+
+        <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h3 class="card-title text-center" >Datos de interes</h3>
+                        <p class="card-text">Total de apuestas: <strong>{{totalApuestas}}</strong></p>
+                        <p class="card-text">Cantidad de apuestas pendientes: <strong>{{cantidadPendientes}}</strong></p>
+                        <p class="card-text">Suma total apostada: <strong>${{sumaDineroApostado}}</strong></p>
+                        <p class="card-text">Promedio de dinero apostado por apuesta: <strong>${{promedioDineroApostado}}</strong></p>
+                        <p class="card-text"> Apuesta más alta: <strong>${{apuestaMasAlta}}</strong>
+                            <a href="/apuestas/edit/{{idApuestaMasAlta}}" class="btn btn-primary ml-2">Ver</a>
+                        </p>
+                        <p class="card-text">Apuesta más baja: <strong>${{apuestaMasBaja}}</strong>
+                            <a href="/apuestas/edit/{{idApuestaMasBaja}}" class="btn btn-primary ml-2">Ver</a>
+                        </p>
+                    </div>
+                </div>
             </div>
+             <div class="col-md-3"></div>
         </div>
-        <div class="card">
-            <div class="card-body">
-                <p class="card-text">Total ganado: <strong>${{gananciaTotal}}</strong></p>
-                <p class="card-text">Total perdido: <strong>${{perdidaTotal}}</strong></p>
-                <p class="card-text">Ganancia/Perdida: <strong class="color-change">${{gananciaPerdida}}</strong></p>
-                <p class="card-text">Apuesta con mayor ganancia: <strong>${{mayorGanancia}}</strong>
-                <a href="/apuestas/edit/{{idMayorGanancia}}" class="btn btn-primary ml-2">Ver</a>
-                </p>
-                <p class="card-text">Apuesta con mayor perdida: <strong>${{mayorPerdida}}</strong>
-                <a href="/apuestas/edit/{{idMayorPerdida}}" class="btn btn-primary ml-2">Ver</a>
-                </p>
-            </div>
-        </div>
+        <br>
         {{else}}
         <div class="col-md-4 mx-auto">
             <div class="card card-body text-center">
-                <p>No hay ninguna apuesta creada aun.</p>
-                <a href="/apuestas/add">Crear una</a>
+                <p>Debes tener al menos una apuesta fallida y una acertada para poder ver tus estadisticas</p>
+                <a href="/apuestas/add">Crear apuesta</a>
             </div>
         </div>
         {{/if}}
