@@ -21,5 +21,24 @@ handlebars.registerHelper('formatDate', function(date) {
     return formattedDate;
 });
 
+handlebars.registerHelper('calculaGanancia', function(cuota, dinero, estado) {
+    if (estado === 'Fallada') {
+        return 'Perdida: ' + dinero;
+    } else {
+        return 'Ganancia: ' + (cuota * dinero - dinero).toFixed(0);
+    }
+});
+
+handlebars.registerHelper('estadoColor', function(estado) {
+    if (estado === 'Fallada') {
+        return 'border-danger';
+    } else if (estado === 'Acertada') {
+        return 'border-primary';
+    } else if (estado === 'Pendiente') {
+        return 'border-secondary';
+    } else {
+        return ''; // Puedes agregar un caso por defecto o dejarlo en blanco si no se especifica ningún estado
+    }
+});
 
 module.exports = helpers;

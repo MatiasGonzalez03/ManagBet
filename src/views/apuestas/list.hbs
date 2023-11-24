@@ -79,14 +79,14 @@
     <div class="row">
         {{#each apuestas}}
         <div class="col-md-3">
-            <div class="card custom-card">
+            <div class="card custom-card {{estadoColor estado}}">
                 <div class="card-body">
                     <h3 class="card-title" >
                         {{partido}}
                     </h3>
-                    <p class="m-2">Estado: {{estado}}</p>
+                    <p class="m-2">Competicion: {{competicion}}</p>
                     <p class="m-2">Pronostico: {{pronostico}}</p>
-                    <p class="m-2">Cuota: {{cuota}}</p>
+                    <p class="m-2 ganancia"><strong>{{calculaGanancia cuota dinero estado}}</strong></p>
                     <p class="m-2"> {{timeago created_at}}</p>
                     <a class="btn" href="/apuestas/delete/{{id}}">
                         Borrar
@@ -108,18 +108,5 @@
     </div>
 </div>
 
-<script>
-    document.addEventListener("DOMContentLoaded", function() {
-        const apuestas = document.querySelectorAll(".custom-card");
-        apuestas.forEach(apuesta => {
-            const estado = apuesta.querySelector('.m-2:nth-child(2)').textContent.split(": ")[1].trim();
-            if (estado === 'Acertada') {
-                apuesta.classList.add('border-primary');
-            } else if (estado === 'Fallada') {
-                apuesta.classList.add('border-danger');
-            }else if (estado === 'Pendiente') {
-                apuesta.classList.add('border-secondary');
-            }
-        });
-    });
-</script>
+
+
